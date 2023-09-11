@@ -1,0 +1,3 @@
+https://blog.csdn.net/Qxnedy/article/details/125682649
+
+device端的Android如何知道与Host端的单片机的USB连接断开了，这需要您在Android设备上注册一个 BroadcastReceiver ，并在 onReceive 方法中处理 ACTION_USB_DEVICE_DETACHED 的广播。这个广播会在USB设备从主机断开时发送，您可以在收到这个广播后关闭连接和释放资源。您可以参考以下链接中的示例代码和详细说明
