@@ -1,0 +1,7 @@
+https://developer.android.google.cn/guide/components/broadcasts?hl=zh-cn
+
+网络状态监听：https://xujun.blog.csdn.net/article/details/53008266?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-1-53008266-blog-106264245.235%5Ev38%5Epc_relevant_sort&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-1-53008266-blog-106264245.235%5Ev38%5Epc_relevant_sort&utm_relevant_index=1
+
+
+https://blog.csdn.net/jdfkldjlkjdl/article/details/85062281
+getApplicationContext() 
