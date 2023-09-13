@@ -1,0 +1,34 @@
+打开app：
+Intent intent = new Intent();
+ComponentName cn = new ComponentName("packageName", "默认启动的activity");
+intent.setComponent(cn);
+startActivity(intent);
+
+例子：
+Intent intent = new Intent();
+ComponentName cn = new ComponentName("com.example.demo", "com.example.demo.MainActivity");
+intent.setComponent(cn);
+startActivity(intent);
+
+
+打开方式2：
+Intent intent = new Intent();
+intent.setPackage("com.kuaishou.nebula");
+intent.addCategory(Intent.CATEGORY_LAUNCHER);
+startActivity(intent);
+
+
+打开方式3：
+//A应用直接拉起B应用
+Intent intent = getPackageManager().getLaunchIntentForPackage("B应用包名");
+                if (intent != null) {
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+//拉起B应用的某个界面，我们可以传一个type值；当然如果知道你要跳转的Activity的类名
+也可以这样写。
+					Intent intent = new Intent();
+                 	intent.setClassName("B应用包名", "B应用包名.Activity");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+

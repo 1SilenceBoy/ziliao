@@ -1,0 +1,22 @@
+https://blog.csdn.net/w296365959/article/details/120766468
+
+
+   /**
+     * 开发者选项是否开启
+     *
+     * @return true 开启
+     */
+    public static boolean isOpenDevelopmentSetting(Activity activity) {
+        boolean enableAdb = Settings.Secure.getInt(activity.getContentResolver(), Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        return enableAdb;
+    }
+
+  /**
+     * usb调试是否开启
+     *
+     * @return true 开启
+     */
+    public static boolean isUSBDebugSetting(Activity activity){
+        boolean enableAdb = Settings.Secure.getInt(activity.getContentResolver(), Settings.Global.ADB_ENABLED, 0) != 0;
+        return enableAdb;
+    }
