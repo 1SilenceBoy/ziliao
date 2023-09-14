@@ -1,4 +1,5 @@
 https://blog.csdn.net/dwh1314/article/details/105048043/?ops_request_misc=&request_id=&biz_id=102&utm_term=Android%20OpenCV&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-5-105048043.nonecase&spm=1018.2226.3001.4187
 
+您好，这是Bing。可以的，您可以使用OpenCV Java API中的**findContours()**方法来获取图像中轮廓的坐标，然后根据轮廓的位置和大小，确定关闭广告的按钮的坐标。
 
 https://blog.csdn.net/qq_41885673/article/details/115324283
