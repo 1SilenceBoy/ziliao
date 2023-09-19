@@ -41,3 +41,43 @@ public class TemplateMatching {
         HighGui.waitKey(0);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+import org.opencv.core.*;
+import org.opencv.highgui.HighGui;
+import org.opencv.imgproc.Imgproc;
+
+public class ImageMatching {
+    public static void main(String[] args) {
+        // 读取原始图像和模板图像
+        Mat source = Imgcodecs.imread("原始图像.jpg");
+        Mat template = Imgcodecs.imread("模板图像.jpg");
+
+        // 创建一个用于存储匹配结果的矩阵
+        Mat result = new Mat();
+
+        // 使用模板匹配算法进行匹配
+        Imgproc.matchTemplate(source, template, result, Imgproc.TM_CCOEFF_NORMED);
+
+        // 获取最佳匹配位置的坐标
+        Core.MinMaxLocResult mmr = Core.minMaxLoc(result);
+        Point matchLoc = mmr.maxLoc;
+
+        // 在原始图像上绘制矩形框标记匹配位置
+        Imgproc.rectangle(source, matchLoc, new Point(matchLoc.x + template.cols(), matchLoc.y + template.rows()), new Scalar(0, 255, 0), 2);
+
+        // 显示绘制了矩形框的图像
+        HighGui.imshow("Result", source);
+        HighGui.waitKey(0);
+    }
+}
