@@ -1,0 +1,33 @@
+您好！以下是从移动云盘上下载文件的 Android 代码实现步骤：
+
+首先，您需要获取文件的 URL。如果您已经有了 URL，可以跳过此步骤。否则，您需要使用移动云盘的 API 获取文件的 URL。请参阅移动云盘的文档以了解更多信息。
+
+接下来，您需要使用 HttpURLConnection 类打开与 URL 的连接。这可以通过以下代码实现：
+
+Java
+此代码由 AI 生成。仔细查看和使用。有关详细信息，请访问我们的常见问题解答。
+
+URL url = new URL(fileUrl);
+HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+然后，您需要设置连接属性。例如，您可以设置请求方法、超时时间、缓存模式等。以下是一些示例代码：
+Java
+此代码由 AI 生成。仔细查看和使用。有关详细信息，请访问我们的常见问题解答。
+
+urlConnection.setRequestMethod("GET");
+urlConnection.setConnectTimeout(5000);
+urlConnection.setReadTimeout(5000);
+urlConnection.setUseCaches(false);
+然后，您需要获取输入流并将其写入文件。以下是一些示例代码：
+Java
+此代码由 AI 生成。仔细查看和使用。有关详细信息，请访问我们的常见问题解答。
+
+InputStream inputStream = urlConnection.getInputStream();
+FileOutputStream fileOutputStream = new FileOutputStream(file);
+byte[] buffer = new byte[1024];
+int len;
+while ((len = inputStream.read(buffer)) != -1) {
+    fileOutputStream.write(buffer, 0, len);
+}
+fileOutputStream.close();
+inputStream.close();
+这样就可以从移动云盘上下载文件了。希望这可以帮助到您！
