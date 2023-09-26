@@ -1,0 +1,49 @@
+在Android Studio（AS）中调试带系统签名的apk，可以参考以下步骤：
+
+1. **获取系统签名文件**：首先，你需要获取系统的签名文件，这通常包括`platform.pk8`和`platform.x509.pem`两个文件¹。这些文件通常包含在Android源码中，路径为`build/target/product/security/`²。如果你没有系统的源码，可能需要联系设备制造商或者在网络上寻找这些文件。
+
+2. **生成签名证书**：将`platform.pk8`和`platform.x509.pem`文件放在同一目录下，然后使用以下命令生成`platform.pem`文件²：
+    ```
+    openssl pkcs8 -in platform.pk8 -inform DER -outform PEM -out platform.pem -nocrypt
+    ```
+   然后，使用以下命令生成`platform.pk12`文件²：
+    ```
+    openssl pkcs12 -export -in platform.x509.pem -inkey platform.pem -out platform.pk12 -name dev
+    ```
+   这里需要输入两次密码²。
+
+3. **生成keystore文件**：使用以下命令生成keystore文件²：
+    ```
+    keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore debug.keystore -srckeystore platform.pk12 -srcstoretype PKCS12 -srcstorepass 123456 -alias androiddebugkey
+    ```
+   这里的密码需要和上一步的密码一致²。
+
+4. **在AS中配置签名信息**：在AS中，你可以通过修改项目的`build.gradle`文件来配置签名信息¹。在`android`配置块中，添加一个`signingConfigs`配置块，如下所示：
+    ```
+    android {
+        ...
+        signingConfigs {
+            debug {
+                storeFile file("debug.keystore")
+                storePassword "123456"
+                keyAlias "androiddebugkey"
+                keyPassword "123456"
+            }
+        }
+        buildTypes {
+            debug {
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+    ```
+   这里的`storeFile`、`storePassword`、`keyAlias`和`keyPassword`需要根据你的实际情况进行修改¹。
+
+5. **调试应用**：配置好签名信息后，你就可以像普通应用一样进行调试了。AS会在构建应用时自动使用配置的签名信息对apk进行签名¹。
+
+请注意，这些步骤需要一定的技术背景，并且可能会带来安全风险。在进行系统签名时，应确保理解每一步的含义，并妥善保管签名文件和密码。¹
+
+源: 与必应的对话， 2023/9/26
+(1) 【安卓】使用AS（Android Studio）生成app的签名 - CSDN博客. https://blog.csdn.net/zhinengxiong6/article/details/121737822.
+(2) Android Studio 打包APK（详细版） - CSDN博客. https://blog.csdn.net/qq_38436214/article/details/112288954.
+(3) Android apk签名详解——AS签名、获取签名信息、系统签名 .... https://www.jianshu.com/p/b4199549b2f5.
