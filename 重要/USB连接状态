@@ -16,3 +16,13 @@ BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 IntentFilter filter = new IntentFilter();
 filter.addAction("android.hardware.usb.action.USB_STATE");
 registerReceiver(broadcastReceiver, filter);
+
+
+
+UsbManager usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
+if (!deviceList.isEmpty()) {
+    for (UsbDevice device : deviceList.values()) {
+        // 在这里，你可以获取到设备的信息
+    }
+}
