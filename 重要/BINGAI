@@ -1,3 +1,5 @@
+http://aospxref.com/android-9.0.0_r61/
+
 在Android Studio（AS）中调试带系统签名的apk，可以参考以下步骤：
 
 1. **获取系统签名文件**：首先，你需要获取系统的签名文件，这通常包括`platform.pk8`和`platform.x509.pem`两个文件¹。这些文件通常包含在Android源码中，路径为`build/target/product/security/`²。如果你没有系统的源码，可能需要联系设备制造商或者在网络上寻找这些文件。
