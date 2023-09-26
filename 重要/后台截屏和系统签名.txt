@@ -8,7 +8,11 @@ keytool-importkeypair：https://gitcode.net/mirrors/getfatday/keytool-importkeyp
 
 SurfaceControl反射：https://huaweicloud.csdn.net/650956c76b896f66024cc51b.html?dp_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzIwNDAwNSwiZXhwIjoxNjk2MjE0MjkzLCJpYXQiOjE2OTU2MDk0OTMsInVzZXJuYW1lIjoiamVzc2llMjAwNDA0In0.TQMaSHy2gtlMXXeefts72MWvTaBNMAPAF25X4kg2Bkw
 
+新系统签名：
+https://blog.csdn.net/qiaoyl113/article/details/118900246?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169570885916800184185455%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169570885916800184185455&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-118900246-null-null.142^v94^chatsearchT3_1&utm_term=keytool-importkeypair&spm=1018.2226.3001.4187
 
+系统签名配置到AS：
+https://blog.csdn.net/cxq234843654/article/details/51557025?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-2-51557025-blog-76222074.235%5Ev38%5Epc_relevant_sort&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-2-51557025-blog-76222074.235%5Ev38%5Epc_relevant_sort&utm_relevant_index=3
 
 
 
