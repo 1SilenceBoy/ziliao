@@ -1,0 +1,12 @@
+public static void setTopApp(Context context) {
+    if (!isRunningForeground(context)) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskInfoList = activityManager.getRunningTasks(100);
+        for (ActivityManager.RunningTaskInfo taskInfo : taskInfoList) {
+            if (taskInfo.topActivity.getPackageName().equals(context.getPackageName())) {
+                activityManager.moveTaskToFront(taskInfo.id, 0);
+                break;
+            }
+        }
+    }
+}
