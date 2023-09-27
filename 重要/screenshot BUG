@@ -1,0 +1,22 @@
+https://blog.csdn.net/u010803735/article/details/113882036?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_utm_term~default-1-113882036-blog-125002854.235^v38^pc_relevant_sort&spm=1001.2101.3001.4242.1&utm_relevant_index=4
+
+keystore存放位置：https://blog.csdn.net/st526403649/article/details/105143302
+
+新实现方式:https://gitee.com/scimence/ScreenShot?_from=gitee_search
+          https://blog.csdn.net/scimence/article/details/86685189
+
+
+//屏幕宽度1920，高度720 
+publicvoid startScreenShot() {
+        try {
+            @SuppressLint("PrivateApi") Class<?> mClassType = Class.forName("android.view.SurfaceControl");
+            Method nativeScreenshotMethod;
+            nativeScreenshotMethod = mClassType.getDeclaredMethod("screenshot", Rect.class, int.class, int.class, int.class);
+            nativeScreenshotMethod.setAccessible(true);
+            Bitmap sBitmap = (Bitmap) nativeScreenshotMethod.invoke(mClassType, new Rect(), 1920, 720, Surface.ROTATION_0);
+            Log.d("MainActivity", "--> nativeScreenshotMethod after sBitmap=" + (sBitmap != null));
+          
+       } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
