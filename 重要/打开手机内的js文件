@@ -1,0 +1,25 @@
+try {
+    // 打开文件输入流
+    FileInputStream fis = context.openFileInput("your_file.js");
+
+    // 读取数据并转换为字符串
+    StringBuilder builder = new StringBuilder();
+    InputStreamReader isr = new InputStreamReader(fis);
+    BufferedReader reader = new BufferedReader(isr);
+    String line;
+    while ((line = reader.readLine()) != null) {
+        builder.append(line);
+    }
+
+    // 关闭输入流
+    fis.close();
+
+    // 将字符串转换为JSONArray
+    JSONArray array = new JSONArray(builder.toString());
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+} catch (JSONException e) {
+    e.printStackTrace();
+}
