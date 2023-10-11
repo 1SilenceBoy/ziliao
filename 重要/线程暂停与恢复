@@ -1,1 +1,50 @@
 https://blog.csdn.net/code_better/article/details/60962339
+
+
+public class MyThread extends Thread {
+    private final Object lock = new Object();
+    private boolean pause = false;
+    private int step = 0;
+
+    void pauseThread() {
+        pause = true;
+    }
+
+    void resumeThread() {
+        pause = false;
+        synchronized (lock) {
+            lock.notifyAll();
+        }
+    }
+
+    void onPause() {
+        synchronized (lock) {
+            try {
+                while (pause) {
+                    lock.wait();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            onPause();  // 在每个步骤之间检查是否应该暂停
+
+            switch (step) {
+                case 0:
+                    // 执行第一步的操作...
+                    break;
+                case 1:
+                    // 执行第二步的操作...
+                    break;
+                // ...
+            }
+
+            step++;  // 进入下一步
+        }
+    }
+}
